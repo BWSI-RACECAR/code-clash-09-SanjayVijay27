@@ -62,7 +62,7 @@ class Solution:
         self.convolutionA = self.compute_convolution()
         self.mean1A = self.data.mean1A
         self.mean2A = self.data.mean2A
-        self.timeModelA = self.search_ppf(self.compute_cdf(), self.data.probModel, epsilon=1e-4)
+        self.timeModelA = self.search_ppf(self.compute_cdf(), self.data.probModel, 1e-4)
         
     def exp(self, x, terms=100):
         """Compute the exponential function
