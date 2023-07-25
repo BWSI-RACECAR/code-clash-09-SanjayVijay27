@@ -62,7 +62,7 @@ class Solution:
         self.convolutionA = self.compute_convolution()
         self.mean1A = self.data.mean1A
         self.mean2A = self.data.mean2A
-        self.timeModelA = self.search_ppf(list(self.compute_cdf()), self.data.probModel, 1e-4)
+        self.timeModelA = self.search_ppf(self.compute_cdf(), self.data.probModel, epsilon=1e-4)
         
     def exp(self, x, terms=100):
         """Compute the exponential function
@@ -157,7 +157,7 @@ class Solution:
         return [self.integrateTrapz(self.convolutionA[:i], self.data.ti[:i]) for i in self.data.ti[1:]]
 
         
-    def search_ppf(cdf_values, target, epsilon=1e-6):
+    def search_ppf(self, cdf_values, target, epsilon=1e-6):
         """
         Calculate the PPF (point percent function = inverse cuumulative distribution function [CDF])
         of a probability distribution using search.
